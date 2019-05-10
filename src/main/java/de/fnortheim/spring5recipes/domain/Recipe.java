@@ -1,6 +1,7 @@
 package de.fnortheim.spring5recipes.domain;
 
 import javax.persistence.*;
+import java.util.Set;
 
 /**
  * created by sebastian on May, 2019
@@ -19,6 +20,9 @@ public class Recipe {
     private String source;
     private String url;
     private String directions;
+
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "recipe")
+    private Set<Ingredient> ingredients;
 
     @Lob // creates BLob which means Binary Large Object
     private Byte[] image;
