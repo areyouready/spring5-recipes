@@ -5,6 +5,7 @@ import de.fnortheim.spring5recipes.domain.UnitOfMeasure;
 import de.fnortheim.spring5recipes.repositories.CategoryRepository;
 import de.fnortheim.spring5recipes.repositories.UnitOfMeasureRepository;
 import de.fnortheim.spring5recipes.services.RecipeService;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -14,6 +15,7 @@ import java.util.Optional;
 /**
  * created by sebastian on Apr, 2019
  */
+@Slf4j
 @Controller
 public class IndexController {
 
@@ -30,6 +32,7 @@ public class IndexController {
 
     @GetMapping({"", "/", "/index"})
     public String getIndexPage(Model model) {
+        log.debug("getting index page");
 
         final Optional<Category> categoryOptional = categoryRepository.findByDescription("American");
         final Optional<UnitOfMeasure> uomOptional = unitOfMeasureRepository.findByDescription("Teaspoon");
